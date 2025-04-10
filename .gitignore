@@ -1,0 +1,14 @@
+# General
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Env
+.env
+
+# Ignore node_modules globally (in case someone runs npm install here)
+node_modules/
