@@ -18,10 +18,11 @@ const companySchema = new mongoose.Schema({
         type: String, //URL to company logo
 
     },
-    userID:{
+    userId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:'USer',
+        ref:'User',
         required: true
     },
 }, {timestamps:true});
+
 export const Company = mongoose.model("Company", companySchema);

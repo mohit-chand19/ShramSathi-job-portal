@@ -69,7 +69,7 @@ export const login = async (req, res) => {
             })
         };
         const tokenData = {
-            userID:user._id
+            userId:user._id
         }
         const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {expiresIn:"1d"});
 
@@ -92,7 +92,7 @@ export const login = async (req, res) => {
 
 }
 
-export const logout = async (res,req) => {
+export const logout = async (req, res) => {
     try {
         return res.status(200).cookie("token","",{maxAge:0}).json({
             message:"Logged out successfully",
@@ -103,14 +103,14 @@ export const logout = async (res,req) => {
     }
 }
 
-export const updateProfile = async (res,req) => {
+export const updateProfile = async (req,res) => {
     try {
         const {fullname,email,phoneNumber,bio,skills} = req.body;
         const file = req.file;
 
         //cloudinary comes here
 
-        let skillsArray
+        let skillsArray;
         if(skills){
             skillsArray = skills.split(",");
         }
@@ -144,12 +144,12 @@ export const updateProfile = async (res,req) => {
         }
 
         return res.status(200).json({
-            message:"Profile updatded sucessfully.",
+            message:"Profile updated sucessfully.",
             user,
             success:true
         })
 
     } catch (error) {
-        
+        console.log(error);
     }
 }
